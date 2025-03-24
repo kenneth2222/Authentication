@@ -53,7 +53,7 @@ exports.getAllCategory = async (req, res) => {
         //Send a response to the user
         res.status(200).json({
             message: "Categories fetched successfully",
-            data: rooms
+            data: categories
         });
     } catch (error) {
         console.log(error.message);

@@ -5,10 +5,12 @@ const userSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
+      trim: true, //This trims before it validates
       required: true,
     },
     email: {
       type: String,
+      trim: true,
       required: true,
       lowerCase: true,
     },
