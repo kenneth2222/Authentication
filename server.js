@@ -40,7 +40,7 @@ const swaggerDefinition = {
       },
       contact: {
         name: 'Ai Engineer',
-        url: 'https://jsonplaceholder.typicode.com',
+        url: 'https://www.linkedin.com/in/obumneme-kenneth/',
       },
     },
 
