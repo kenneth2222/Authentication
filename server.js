@@ -35,9 +35,8 @@ const swaggerDefinition = {
       description:
         'This is the first swagger documentation i have ever done',
       license: {
-        name: 'Licensed Under MIT',
-        Base_URL: 'https://kenneAi@render.com',
-        url: 'https://spdx.org/licenses/MIT.html',
+        name:'Base_URL: https://authentication-4hec.onrender.com',
+        // url: 'https://spdx.org/licenses/MIT.html',
       },
       contact: {
         name: 'Ai Engineer',
@@ -59,10 +58,10 @@ const swaggerDefinition = {
 
     //Two urls in the server object, one is the development server and the other is the production server
     servers: [
-        // {
-        //     url: 'http://localhost:8000',
-        //     description: 'Production server',
-        //   },
+        {
+            url: 'https://authentication-4hec.onrender.com',
+            description: 'Production server',
+          },
       {
         url: 'http://localhost:4060',
         description: 'Development server',
