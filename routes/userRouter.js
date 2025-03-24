@@ -13,6 +13,7 @@ const jwt = require("jsonwebtoken");
  *     description: Creates a new user account in the system.
  *     tags:
  *       - Users
+ *     security: [] # No Authentication Needed
  *     requestBody:
  *       required: true
  *       content:
@@ -532,8 +533,7 @@ userRouter.get("/googleAuthenticate", passport.authenticate("google", { scope: [
  *     description: Authenticates a user via Google and returns a JWT token upon successful login.
  *     tags:
  *       - Google Authentication
- *     security:
- *       - BearerAuth: [] # Requires authentication
+ *     security: [] # No Authentication Required
  *     responses:
  *       200:
  *         description: Google authentication successful, JWT token generated
