@@ -11,7 +11,7 @@ const {authenticate, adminAuth} = require('../middleware/authentication');
  *     tags:
  *       - Categories
  *     security:
- *       - BearerAuth: [] # Requires authentication
+ *       - bearerAuth: []  # Requires authentication
  *     requestBody:
  *       required: true
  *       content:
@@ -21,35 +21,17 @@ const {authenticate, adminAuth} = require('../middleware/authentication');
  *             properties:
  *               name:
  *                 type: string
- *                 description: The name of the category
+ *                 description: The name of the category.
  *                 example: "Luxury Suites"
- *               rooms:
- *                 type: array
- *                 items:
- *                   type: string
- *                 description: List of room IDs associated with this category
- *                 example: ["605c72b1f1a3c619946b57da", "605c72b1f1a3c619946b57db"]
  *               amenities:
  *                 type: array
  *                 items:
  *                   type: string
- *                 description: List of amenities available in this category
+ *                 description: List of amenities available in this category.
  *                 example: ["Swimming Pool", "Free Breakfast", "Wi-Fi"]
- *               createdBy:
- *                 type: object
- *                 description: Admin who created the category
- *                 properties:
- *                   adminId:
- *                     type: string
- *                     description: The ID of the admin who created the category
- *                     example: "605c72b1f1a3c619946b57dc"
- *                   adminName:
- *                     type: string
- *                     description: Name of the admin who created the category
- *                     example: "John Doe"
  *     responses:
  *       201:
- *         description: Category created successfully
+ *         description: Category created successfully.
  *         content:
  *           application/json:
  *             schema:
@@ -57,86 +39,90 @@ const {authenticate, adminAuth} = require('../middleware/authentication');
  *               properties:
  *                 message:
  *                   type: string
- *                   example: "Category created successfully"
+ *                   example: "Category Created Successfully"
  *                 data:
  *                   type: object
  *                   properties:
  *                     _id:
  *                       type: string
- *                       description: Category ID
+ *                       description: Category ID.
  *                       example: "67c9e9fe16af37fc64fc25f6"
  *                     name:
  *                       type: string
- *                       description: The name of the category
+ *                       description: The name of the category.
  *                       example: "Luxury Suites"
- *                     rooms:
- *                       type: array
- *                       items:
- *                         type: string
- *                       description: List of room IDs associated with this category
- *                       example: ["605c72b1f1a3c619946b57da", "605c72b1f1a3c619946b57db"]
  *                     amenities:
  *                       type: array
  *                       items:
  *                         type: string
- *                       description: List of amenities available
+ *                       description: List of amenities available.
  *                       example: ["Swimming Pool", "Free Breakfast", "Wi-Fi"]
  *                     createdBy:
  *                       type: object
  *                       properties:
  *                         adminId:
  *                           type: string
- *                           description: The ID of the admin who created the category
+ *                           description: The ID of the admin who created the category.
  *                           example: "605c72b1f1a3c619946b57dc"
  *                         adminName:
  *                           type: string
- *                           description: Name of the admin who created the category
+ *                           description: Name of the admin who created the category.
  *                           example: "John Doe"
  *                     createdAt:
  *                       type: string
  *                       format: date-time
- *                       description: Date and time when the category was created
+ *                       description: Timestamp of category creation.
  *                       example: "2025-03-06T18:31:26.298Z"
  *       400:
- *         description: Bad Request - Invalid Input
+ *         description: Bad Request - Invalid input.
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 error:
+ *                 message:
  *                   type: string
- *                   example: "Category name is required"
+ *                   example: "Name and amenities are required"
  *       401:
- *         description: Unauthorized - User is not authenticated
+ *         description: Unauthorized - User is not authenticated.
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 error:
+ *                 message:
  *                   type: string
  *                   example: "Authentication required"
  *       403:
- *         description: Forbidden - User is not an admin
+ *         description: Forbidden - User is not an admin.
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 error:
+ *                 message:
  *                   type: string
  *                   example: "Access denied. Admins only."
- *       500:
- *         description: Internal Server Error
+ *       404:
+ *         description: Not Found - User does not exist.
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 error:
+ *                 message:
  *                   type: string
- *                   example: "Failed to create category"
+ *                   example: "User not found"
+ *       500:
+ *         description: Internal Server Error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Internal Server Error"
  */
 
 
