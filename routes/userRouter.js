@@ -29,16 +29,11 @@ const jwt = require("jsonwebtoken");
  *                 type: string
  *                 format: email
  *                 description: Email address of the user
- *                 example: "obusco4lyfe@gmail.com"
+ *                 example: "aiengineer@gmail.com"
  *               password:
  *                 type: string
  *                 format: password
  *                 description: User's password (hashed before storing)
- *                 example: "StrongP@ssword123"
- *               confirmPassword:
- *                 type: string
- *                 format: password
- *                 description: Must match the password field
  *                 example: "StrongP@ssword123"
  *     responses:
  *       201:

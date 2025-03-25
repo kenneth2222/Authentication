@@ -8,7 +8,7 @@ const upload = require('../utils/multer')
  * /room/{id}:
  *   post:
  *     summary: Create a new room
- *     description: Allows an admin to create a new room and upload images. Authentication required.
+ *     description: Allows an admin to create a new room and upload images. Authentication and admin privileges required.
  *     tags:
  *       - Rooms
  *     security:
@@ -40,6 +40,10 @@ const upload = require('../utils/multer')
  *                 type: number
  *                 description: Price per night
  *                 example: 250
+ *               roomNumber:
+ *                 type: string
+ *                 description: Unique room number
+ *                 example: "A101"
  *               images:
  *                 type: array
  *                 items:
@@ -76,12 +80,22 @@ const upload = require('../utils/multer')
  *                       type: number
  *                       description: Price per night
  *                       example: 250
+ *                     roomNumber:
+ *                       type: string
+ *                       description: Unique room number
+ *                       example: "A101"
  *                     images:
  *                       type: array
  *                       items:
- *                         type: string
- *                         format: uri
- *                       description: URLs of uploaded images
+ *                         type: object
+ *                         properties:
+ *                           public_id:
+ *                             type: string
+ *                             description: Image public ID from Cloudinary
+ *                           imageUrl:
+ *                             type: string
+ *                             format: uri
+ *                             description: URL of the uploaded image
  *                     createdAt:
  *                       type: string
  *                       format: date-time
@@ -117,6 +131,16 @@ const upload = require('../utils/multer')
  *                 error:
  *                   type: string
  *                   example: "Access denied. Admins only."
+ *       404:
+ *         description: Not Found - Category does not exist
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Category not found"
  *       500:
  *         description: Internal Server Error
  *         content:
@@ -128,6 +152,7 @@ const upload = require('../utils/multer')
  *                   type: string
  *                   example: "Failed to create room"
  */
+
 
 roomRouter.post('/room/:id', upload.array('images', 10), createRoom);
 

@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require("cors");
 require('dotenv').config();
 require('./config/database');
 const PORT = process.env.PORT;
@@ -13,6 +14,7 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
 
+
 const app = express();
 app.use(express.json());
 
@@ -25,6 +27,12 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+// app.use(cors({ origin: "*", methods: "GET,HEAD,PUT,PATCH,POST,DELETE" }));
+app.use(cors({
+  origin: ['http://localhost:4060', 'https://authentication-4hec.onrender.com'], // Allow both dev and production servers
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true // This allows cookies & session handling
+}));
 
 
 const swaggerDefinition = {
@@ -54,7 +62,7 @@ const swaggerDefinition = {
         }
       },
 
-      security: [{BearerAuth: []}],
+      security: [{ bearerAuth: [] }],
 
     //Two urls in the server object, one is the development server and the other is the production server
     servers: [

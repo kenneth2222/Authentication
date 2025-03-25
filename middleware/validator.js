@@ -3,7 +3,7 @@ const Joi = require('joi');
 
 exports.registerValidation = (req, res, next) => {
     const schema = Joi.object({
-        fullName: Joi.string().min(3).trim().pattern(/^\s*[A-Za-z]+\s*$/)
+        fullName: Joi.string().min(3).trim().pattern(/^[A-Za-z\s]+$/)
             .required()
             .messages({
                 'any.required': 'Fullname is required',

@@ -7,7 +7,7 @@ const userModel = require('../model/user');
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:4060/auth/google/login"
+    callbackURL: "http://localhost:4060/auth/google/login"//This is where the user will be redirected after successful login
   },
   async function(accessToken, refreshToken, profile, cb) {
     try {
