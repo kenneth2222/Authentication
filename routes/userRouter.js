@@ -35,6 +35,11 @@ const jwt = require("jsonwebtoken");
  *                 format: password
  *                 description: User's password (hashed before storing)
  *                 example: "StrongP@ssword123"
+ *               confirmPassword:
+ *                 type: string
+ *                 format: password
+ *                 description: User's password (hashed before storing)
+ *                 example: "StrongP@ssword123"
  *     responses:
  *       201:
  *         description: User registered successfully
